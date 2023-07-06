@@ -1,11 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import {
-  addContactsThunk,
-  getContactsThunk,
-  deleteContactByIdThunk,
-} from './contacts.thunk';
+import { addContacts, getContacts, deleteContactById } from './contacts.thunk';
 
 const contactsInitState = {
   contacts: [],
@@ -18,21 +14,21 @@ const contactsSlice = createSlice({
   initialState: contactsInitState,
   extraReducers: builder => {
     builder
-      .addCase(getContactsThunk.pending, state => {
+      .addCase(getContacts.pending, state => {
         state.isLoading = true;
       })
-      .addCase(getContactsThunk.fulfilled, (state, { payload }) => {
+      .addCase(getContacts.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.contacts = payload;
       })
-      .addCase(getContactsThunk.rejected, (state, { payload }) => {
+      .addCase(getContacts.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
-      .addCase(addContactsThunk.pending, state => {
+      .addCase(addContacts.pending, state => {
         state.isLoading = true;
       })
-      .addCase(addContactsThunk.fulfilled, (state, { payload }) => {
+      .addCase(addContacts.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         const newContact = {
           id: nanoid(),
@@ -42,20 +38,20 @@ const contactsSlice = createSlice({
           ? Notify.warning(`${newContact.name} is already in contacts`)
           : state.contacts.push(newContact);
       })
-      .addCase(addContactsThunk.rejected, (state, { payload }) => {
+      .addCase(addContacts.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
-      .addCase(deleteContactByIdThunk.pending, state => {
+      .addCase(deleteContactById.pending, state => {
         state.isLoading = true;
       })
-      .addCase(deleteContactByIdThunk.fulfilled, (state, { payload }) => {
+      .addCase(deleteContactById.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.contacts = state.contacts.filter(
           contact => contact.id !== payload.id
         );
       })
-      .addCase(deleteContactByIdThunk.rejected, (state, { payload }) => {
+      .addCase(deleteContactById.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

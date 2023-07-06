@@ -6,8 +6,8 @@ import {
   selectLoading,
   selectError,
 } from 'redux/selectors';
-import { getContactsThunk } from 'redux/contacts.thunk';
-import { deleteContactByIdThunk } from 'redux/contacts.thunk';
+import { getContacts } from 'redux/contacts.thunk';
+import { deleteContactById } from 'redux/contacts.thunk';
 import {
   ContactItem,
   ContactName,
@@ -23,7 +23,7 @@ const ContactsList = () => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(getContactsThunk());
+    dispatch(getContacts());
   }, [dispatch]);
 
   return (
@@ -38,7 +38,7 @@ const ContactsList = () => {
             </ContactName>
             <Button
               type="button"
-              onClick={() => dispatch(deleteContactByIdThunk(id))}
+              onClick={() => dispatch(deleteContactById(id))}
             >
               Delete
             </Button>

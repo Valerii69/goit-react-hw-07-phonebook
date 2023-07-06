@@ -1,7 +1,7 @@
 // import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContactsThunk } from 'redux/contacts.thunk';
+import { addContacts } from 'redux/contacts.thunk';
 import { Label, Input, Button, FormContainer } from './Form.styled';
 
 const Form = () => {
@@ -24,7 +24,7 @@ const Form = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addContactsThunk({ name, phone }));
+    dispatch(addContacts({ name, phone }));
     setName('');
     setPhone('');
   };
