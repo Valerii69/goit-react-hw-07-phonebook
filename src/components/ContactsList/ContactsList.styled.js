@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import { colors } from 'styles/vars';
 
 export const Button = styled.button`
   background: transparent;
   border-radius: 3px;
-  border: ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.background};
-  box-shadow: ${({ theme }) => theme.boxShadow};
+  border: ${colors.border};
+
+  color: ${colors.background};
+  box-shadow: ${colors.boxShadow};
   margin: 0.5em 1em;
   padding: 0.25em 1em;
   cursor: pointer;
@@ -13,7 +15,7 @@ export const Button = styled.button`
 export const ContactName = styled.p`
   font-size: 16px;
   font-weight: 500;
-  color: ${({ theme }) => theme.background};
+  color: ${colors.background};
   text-transform: capitalize;
 `;
 export const ContactNumber = styled.span`
@@ -25,5 +27,5 @@ export const ContactItem = styled.li`
   align-items: center;
   margin-top: 8px;
   justify-content: space-between;
-  font-style: ${({ theme }) => theme.fonts};
+  font-style: ${colors.fonts};
 `;

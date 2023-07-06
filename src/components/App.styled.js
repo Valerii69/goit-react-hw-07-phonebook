@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { colors } from 'styles/vars';
 
 export const Title = styled.h2`
-  color: ${({ theme }) => theme.colorText};
+  color: ${colors.colorTextContacts};
   font-size: 30px;
   padding: 0;
 `;

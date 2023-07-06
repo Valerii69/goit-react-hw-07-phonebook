@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from 'styles/vars';
 
 export const Label = styled.label`
   display: flex;
@@ -6,7 +7,7 @@ export const Label = styled.label`
   align-items: flex-start;
   gap: 10px;
   margin-top: 10px;
-  color: ${({ theme }) => theme.colorText};
+  color: ${colors.colorTextContacts};
   font-size: 16px;
   font-weight: 500;
 `;
@@ -15,16 +16,16 @@ export const Input = styled.input`
   padding: 5px;
   background: transparent;
   border-radius: 3px;
-  border: ${({ theme }) => theme.border};
-  box-shadow: ${({ theme }) => theme.boxShadow};
-  color: ${({ theme }) => theme.colorText};
+  border: ${colors.border};
+  box-shadow: ${colors.boxShadow};
+  color: ${colors.colorTextContacts};
 `;
 export const Button = styled.button`
   background: transparent;
   border-radius: 3px;
-  border: ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.colorTextContacts};
-  box-shadow: ${({ theme }) => theme.boxShadow};
+  border: ${colors.border};
+  color: ${colors.colorTextContacts};
+  box-shadow: ${colors.boxShadow};
   margin: 0.5em 1em;
   padding: 0.25em 1em;
   cursor: pointer;
