@@ -1,7 +1,7 @@
 // import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContacts } from 'redux/contacts.thunk';
+import { addContacts } from 'redux/contacts-api';
 import { Label, Input, Button, FormContainer } from './Form.styled';
 
 const Form = () => {

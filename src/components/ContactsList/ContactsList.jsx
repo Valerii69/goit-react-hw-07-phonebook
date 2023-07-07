@@ -6,8 +6,8 @@ import {
   selectLoading,
   selectError,
 } from 'redux/selectors';
-import { getContacts } from 'redux/contacts.thunk';
-import { deleteContactById } from 'redux/contacts.thunk';
+import { getContacts } from 'redux/contacts-api';
+import { deleteContactById } from 'redux/contacts-api';
 import {
   ContactItem,
   ContactName,

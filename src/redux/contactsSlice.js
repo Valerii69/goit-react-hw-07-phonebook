@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { addContacts, getContacts, deleteContactById } from './contacts.thunk';
+import { addContacts, getContacts, deleteContactById } from './contacts-api';
 
 const contactsInitState = {
   contacts: [],
