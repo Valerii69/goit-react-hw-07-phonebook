@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContacts } from 'redux/contacts-api';
 import { Label, Input, Button, FormContainer } from './Form.styled';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -25,12 +26,14 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(addContacts({ name, phone }));
+
     setName('');
     setPhone('');
+    // Notify.success(`${phone} added to contacts`);
   };
 
   return (
-    <FormContainer onSubmit={handleSubmit} autoComplete="off">
+    <FormContainer onSubmit={handleSubmit}>
       <div>
         <Label>
           Name
@@ -38,6 +41,7 @@ const Form = () => {
             type="text"
             name="name"
             value={name}
+            autoComplete="on"
             onChange={handleChange}
             placeholder="Enter name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -51,6 +55,7 @@ const Form = () => {
             type="tel"
             name="number"
             value={phone}
+            autoComplete="on"
             onChange={handleChange}
             placeholder="Enter number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

@@ -30,13 +30,14 @@ const contactsSlice = createSlice({
       })
       .addCase(addContacts.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        const newContact = {
-          id: nanoid(),
-          ...payload,
-        };
+
+        // Notify.success(`${payload.name} added to contacts`);
+        const newContact = { id: nanoid(), ...payload };
+
         state.contacts.some(({ name }) => name === payload.name)
           ? Notify.warning(`${newContact.name} is already in contacts`)
-          : state.contacts.push(newContact);
+          : Notify.success(`${payload.name} added to contacts`);
+        state.contacts.push(newContact);
       })
       .addCase(addContacts.rejected, (state, { payload }) => {
         state.isLoading = false;
