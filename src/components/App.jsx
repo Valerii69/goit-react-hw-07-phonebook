@@ -2,8 +2,10 @@ import Form from './Form';
 import ContactsList from './ContactsList';
 import Filter from './Filter';
 import { Section, Title, Container } from './App.styled';
-
+import { selectError } from 'redux/selectors';
+import { useSelector } from 'react-redux';
 export function App() {
+  const error = useSelector(selectError);
   return (
     <>
       <Container>
@@ -17,6 +19,7 @@ export function App() {
           <ContactsList />
         </Section>
       </Container>
+      {error && <p>Something went wrong ...</p>}
     </>
   );
 }

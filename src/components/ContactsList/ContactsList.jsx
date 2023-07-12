@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-// import ContactsListItem from 'components/ContactsListItem';
 import {
   selectVisibleContacts,
   selectLoading,
@@ -28,8 +27,7 @@ const ContactsList = () => {
 
   return (
     <ul>
-      {!isLoading &&
-        !error &&
+      {!error &&
         visibleContacts.map(({ id, name, phone }) => (
           <ContactItem key={id}>
             <ContactName>
@@ -45,7 +43,6 @@ const ContactsList = () => {
           </ContactItem>
         ))}
       {isLoading && <Loader />}
-      {error && <p>Something went wrong ...</p>}
     </ul>
   );
 };

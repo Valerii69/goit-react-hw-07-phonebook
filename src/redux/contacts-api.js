@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 axios.defaults.baseURL = 'https://63e7a672cbdc5658737b00c0.mockapi.io';
 
@@ -20,6 +21,7 @@ export const addContacts = createAsyncThunk(
   async (newContact, thunkAPI) => {
     try {
       const { data } = await axios.post('/contacts', newContact);
+      Notify.success(`${newContact.name} added to contacts`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

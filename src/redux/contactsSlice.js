@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { addContacts, getContacts, deleteContactById } from './contacts-api';
 
 const contactsInitState = {
@@ -30,14 +28,7 @@ const contactsSlice = createSlice({
       })
       .addCase(addContacts.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-
-        // Notify.success(`${payload.name} added to contacts`);
-        const newContact = { id: nanoid(), ...payload };
-
-        state.contacts.some(({ name }) => name === payload.name)
-          ? Notify.warning(`${newContact.name} is already in contacts`)
-          : Notify.success(`${payload.name} added to contacts`);
-        state.contacts.push(newContact);
+        state.contacts.push(payload);
       })
       .addCase(addContacts.rejected, (state, { payload }) => {
         state.isLoading = false;
