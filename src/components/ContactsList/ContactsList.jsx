@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {
   selectVisibleContacts,
-  selectLoading,
+  selectIsLoading,
   selectError,
 } from 'redux/selectors';
 import { getContacts } from 'redux/contacts-api';
@@ -18,7 +18,7 @@ import Loader from 'components/Loader/Loader';
 const ContactsList = () => {
   const dispatch = useDispatch();
   const visibleContacts = useSelector(selectVisibleContacts);
-  const isLoading = useSelector(selectLoading);
+  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
